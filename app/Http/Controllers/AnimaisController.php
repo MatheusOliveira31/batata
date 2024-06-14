@@ -13,4 +13,8 @@ class AnimaisController extends Controller
     public function cadastrar() {
         return view('animais.cadastrar');
     }
+
+    public function gravar(Request $form) {
+        echo $form ->nome;
+    }
 }
