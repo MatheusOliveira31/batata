@@ -19,6 +19,7 @@
     @csrf
     <input type="text" name="nome" placeholder="Nome" value="{{ old('nome')}}"> <br>
     <input type="number" name="idade" placeholder="Idade" value="{{ old('idade')}}"> <br>
+    <input type="text" name="descricao" placeholder="Descrição" value="{{ old('descricao')}}"> <br>
     <input type="submit" value="Gravar"> <br>
 </form>
 @endsection

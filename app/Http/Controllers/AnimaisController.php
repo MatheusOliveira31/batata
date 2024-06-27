@@ -7,28 +7,53 @@ use Illuminate\Http\Request;
 
 class AnimaisController extends Controller
 {
-    public function index() {
+    public function index()
+    {
         $dados = Animal::all();
         return view('animais.index', [
             'animais' => $dados,
         ]);
     }
 
-    public function cadastrar() {
+    public function cadastrar()
+    {
         return view('animais.cadastrar');
     }
 
-    public function gravar(Request $form) {
+    public function gravar(Request $form)
+    {
         $dados = $form->validate([
             'nome' => 'required|min:3',
-            'idade' => 'required|integer'
+            'idade' => 'required|integer',
+            'descricao' => 'required'
+
         ]);
         Animal::create($dados);
         return redirect()->route('animais');
     }
-    public function apagar(Animal $animal){
-        return view ('animais.apagar', [
-        'animal' => $animal,
-    ]);
+    public function apagar(Animal $animal)
+    {
+        return view('animais.apagar', [
+            'animal' => $animal,
+        ]);
+    }
+
+    public function editar(Animal $animal)
+    {
+        return view('animais/editar', ['animal' => $animal]);
+    }
+
+
+    public function editarGravar(Request $form, Animal $animal)
+    {
+        $dados = $form->validate([
+            'nome' => 'required|max:255',
+            'idade' => 'required',
+            'descricao' => 'required'
+        ]);
+
+        $animal->fill($dados);
+        $animal->save();
+        return redirect()->route('animais');
     }
 }

@@ -14,6 +14,8 @@ class Animal extends Model
     protected $fillable = [
         'id',
         'nome',
+        'descricao',
         'idade', //fillable > campos de dados preenchíveis
+        
     ];
 }

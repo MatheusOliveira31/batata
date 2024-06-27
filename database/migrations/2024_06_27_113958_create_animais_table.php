@@ -15,6 +15,7 @@ return new class extends Migration
             $table->id();
             $table->string('nome');
             $table->smallInteger('idade')->unsigned();
+            $table->string('descricao');
             $table->timestamps();
         });
     }
