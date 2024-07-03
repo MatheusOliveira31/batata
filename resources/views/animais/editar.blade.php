@@ -10,7 +10,7 @@
  @endforeach
  </ul>
  @endif
- <form action="{{ route('animais/editar', $animal->id) }}" method="post">
+ <form action="{{ route('animais.editar', $animal->id) }}" method="post">
  @csrf
  @method('put')
 

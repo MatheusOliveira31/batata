@@ -22,6 +22,8 @@ Veja nossa lista para aninais para adoação
             <td>{{ $animal['idade'] }}</td>
             <td>{{ $animal['descricao'] }}</td>
             <td><a href="{{ route('animais.apagar' , $animal["id"]) }}">Apagar</td>
+            <td><a href="{{ route('animais.editar' , $animal["id"]) }}">Editar</td>
+
         </tr>
         @endforeach
     </table>

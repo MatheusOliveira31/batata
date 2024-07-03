@@ -38,6 +38,12 @@ class AnimaisController extends Controller
         ]);
     }
 
+    public function deletar(Animal $animal)
+    {
+        $animal->delete();
+        return redirect()->route('animais');
+    }
+
     public function editar(Animal $animal)
     {
         return view('animais/editar', ['animal' => $animal]);
