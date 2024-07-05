@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Usuario;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Hash;
 
 class UsuarioController extends Controller
 {
@@ -24,12 +25,16 @@ class UsuarioController extends Controller
     {
         $dados = $form->validate([
             'nome' => 'required|min:3',
-            'idade' => 'required|integer',
-            'descricao' => 'required'
+            'email' => 'required|email',
+            'login' => 'required',
+            'senha' => 'required|min:6'
+
 
         ]);
+        $dados['senha'] = Hash::make($dados['senha']);
+
         Usuario::create($dados);
-        return redirect()->route('usuarios');
+        return redirect()->route('usuario');
     }
     public function apagar(Usuario $usuario)
     {
@@ -41,7 +46,7 @@ class UsuarioController extends Controller
     public function deletar(Usuario $usuario)
     {
         $usuario->delete();
-        return redirect()->route('usuarios');
+        return redirect()->route('usuario');
     }
 
     public function editar(Usuario $usuario)
@@ -53,13 +58,14 @@ class UsuarioController extends Controller
     public function editarGravar(Request $form, Usuario $usuario)
     {
         $dados = $form->validate([
-            'nome' => 'required|max:255',
-            'idade' => 'required',
-            'descricao' => 'required'
+            'nome' => 'required|min:3',
+            'email' => 'required|email',
+            'login' => 'required',
+            'senha' => 'required|min:6'
         ]);
 
         $usuario->fill($dados);
         $usuario->save();
-        return redirect()->route('usuarios');
+        return redirect()->route('usuario');
     }
 }

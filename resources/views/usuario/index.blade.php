@@ -17,7 +17,7 @@
             <th>Login</th>
         </tr>
         <tr>
-            @foreach($animais as $animal)
+            @foreach($usuarios as $usuario)
             <td>{{ $usuario['nome'] }}</td>
             <td>{{ $usuario['email'] }}</td>
             <td>{{ $usuario['login'] }}</td>

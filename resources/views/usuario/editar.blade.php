@@ -20,7 +20,7 @@ placeholder="Nome do Usuário" value=""></p>
 placeholder="Email do Usuário"></p>
 <p><input value="{{ old('login', $usuario->login?? '') }}" type="text" name="login"
     placeholder="Login do Usuário"></p>
-<p><input value="{{ old('senha', $usuario->senha?? '') }}" type="text" name="login"
+<p><input value="{{ old('senha', $usuario->senha?? '') }}" type="text" name="senha"
         placeholder="Senha do Usuário"></p>
 
  <p><input type="submit" value="Gravar"></p>
